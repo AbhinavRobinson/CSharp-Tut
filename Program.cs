@@ -6,12 +6,16 @@ namespace CSharp_Tut
     {
         public static void Main(string[] args)
         {
-            const string name = "Abhinav Robinson";
+            // Set app vars
+            string appName = "NumberGusser";
+            string appVersion = "1.0.0";
+            string appAuthor = "Abhinav Robinson";
             
-            // Beep Boop
-            Console.Beep();
-            // Print 
-            Console.WriteLine("Hello, {0}!", name);
+            // Change Console text color
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.BackgroundColor = ConsoleColor.Gray;
+            Console.WriteLine("{0}: Version {1} by {2}", appName, appVersion, appAuthor);
+            Console.ResetColor();
         }
     }
 }

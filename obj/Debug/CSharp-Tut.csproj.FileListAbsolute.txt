@@ -1,0 +1,6 @@
+D:\MAINSTUFF\ActiveProjects\CSharp-Tut\bin\Debug\CSharp_Tut.exe
+D:\MAINSTUFF\ActiveProjects\CSharp-Tut\bin\Debug\CSharp_Tut.pdb
+D:\MAINSTUFF\ActiveProjects\CSharp-Tut\obj\Debug\CSharp-Tut.csprojAssemblyReference.cache
+D:\MAINSTUFF\ActiveProjects\CSharp-Tut\obj\Debug\CSharp-Tut.csproj.CoreCompileInputs.cache
+D:\MAINSTUFF\ActiveProjects\CSharp-Tut\obj\Debug\CSharp_Tut.exe
+D:\MAINSTUFF\ActiveProjects\CSharp-Tut\obj\Debug\CSharp_Tut.pdb

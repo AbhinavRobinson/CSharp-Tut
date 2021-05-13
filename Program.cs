@@ -7,44 +7,57 @@ namespace CSharp_Tut
         public static void Main(string[] args)
         {
             // Set app vars
-            string appName = "NumberGusser";
-            string appVersion = "1.0.0";
-            string appAuthor = "Abhinav Robinson";
-            
+            const string appName = "NumberGusser";
+            const string appVersion = "1.0.0";
+            const string appAuthor = "Abhinav Robinson";
+
             // Change Console text color
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("{0}: Version {1} by {2}", appName, appVersion, appAuthor);
             Console.ResetColor();
-            
+
             // Ask users name
             Console.WriteLine("What's your name?");
-            
+
             // Get input
             string userName = Console.ReadLine();
             Console.WriteLine("Hello, {0}!", userName);
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("Let's play a game :)");
             Console.ResetColor();
-            
-            // Set correct Number
-            int correctNum = 7;
-            
-            // init guess var
-            int guess = 0;
-            
-            Console.WriteLine("Guess a number between 1 and 10!");
 
             while (true)
             {
-                guess = Int32.Parse(Console.ReadLine() ?? string.Empty);
-                Console.ForegroundColor = ConsoleColor.Red;
-                if (guess != correctNum) Console.WriteLine("Incorrect, Try again :D");
-                else break;
+                // Set correct Number
+                var random = new Random();
+                var correctNum = random.Next(1, 10);
+                Console.WriteLine("Guess a number between 1 and 10!");
+                while (true)
+                {
+                    string input = Console.ReadLine();
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    if (!int.TryParse(input, out var guess))
+                    {
+                        Console.WriteLine("Please enter a valid number!");
+                        Console.ResetColor();
+                        continue;
+                    }
+
+                    if (guess != correctNum) Console.WriteLine("Incorrect, Please try again ...");
+                    else break;
+                    Console.ResetColor();
+                }
+
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine("Correct (0-0)");
                 Console.ResetColor();
+                Console.WriteLine("Play Again? [Y or N]");
+
+                string answer = Console.ReadLine();
+                if (answer?.ToUpper() == "N") break;
             }
-            
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("Correct (0-0)");
+            Console.WriteLine("Okay Bye Now...");
             Console.ResetColor();
         }
     }

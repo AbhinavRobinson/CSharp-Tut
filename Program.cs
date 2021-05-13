@@ -6,26 +6,13 @@ namespace CSharp_Tut
     {
         public static void Main(string[] args)
         {
-            // Set app vars
-            const string appName = "NumberGusser";
-            const string appVersion = "1.0.0";
-            const string appAuthor = "Abhinav Robinson";
+            GetAppInfo();
+            GreetUser();
+            PlayGame();
+        }
 
-            // Change Console text color
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine("{0}: Version {1} by {2}", appName, appVersion, appAuthor);
-            Console.ResetColor();
-
-            // Ask users name
-            Console.WriteLine("What's your name?");
-
-            // Get input
-            string userName = Console.ReadLine();
-            Console.WriteLine("Hello, {0}!", userName);
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine("Let's play a game :)");
-            Console.ResetColor();
-
+        private static void PlayGame()
+        {
             while (true)
             {
                 // Set correct Number
@@ -35,29 +22,54 @@ namespace CSharp_Tut
                 while (true)
                 {
                     string input = Console.ReadLine();
-                    Console.ForegroundColor = ConsoleColor.Red;
                     if (!int.TryParse(input, out var guess))
                     {
-                        Console.WriteLine("Please enter a valid number!");
-                        Console.ResetColor();
+                        PrintColorMessage("Please enter a valid number!", ConsoleColor.Red);
                         continue;
                     }
 
-                    if (guess != correctNum) Console.WriteLine("Incorrect, Please try again ...");
+                    if (guess != correctNum) PrintColorMessage("Incorrect, Please try again ...", ConsoleColor.Red);
                     else break;
-                    Console.ResetColor();
                 }
 
-                Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine("Correct (0-0)");
-                Console.ResetColor();
+                PrintColorMessage("Correct (0-0)", ConsoleColor.Green);
                 Console.WriteLine("Play Again? [Y or N]");
 
                 string answer = Console.ReadLine();
                 if (answer?.ToUpper() == "N") break;
             }
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("Okay Bye Now...");
+
+            PrintColorMessage("Okay Bye Now...", ConsoleColor.Green);
+        }
+
+        private static void GetAppInfo()
+        {
+            // Set app vars
+            const string appName = "NumberGusser";
+            const string appVersion = "1.0.0";
+            const string appAuthor = "Abhinav Robinson";
+
+            // Change Console text color
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("{0}: Version {1} by {2}", appName, appVersion, appAuthor);
+            Console.ResetColor();
+        }
+        
+        private static void GreetUser()
+        {
+            // Ask users name
+            Console.WriteLine("What's your name?");
+
+            // Get input
+            string userName = Console.ReadLine();
+            Console.WriteLine("Hello, {0}!", userName);
+            PrintColorMessage("Let's play a game :)", ConsoleColor.Yellow);
+        }
+
+        private static void PrintColorMessage(string msg, ConsoleColor color)
+        {
+            Console.ForegroundColor = color;
+            Console.WriteLine(msg);
             Console.ResetColor();
         }
     }
